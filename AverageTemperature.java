@@ -9,7 +9,7 @@ public class AverageTemperature {
         int numDays = scanner.nextInt();
         double[] temperatures = new double[numDays];
 
-        // 2. Ask the user for the temperature of each day
+        // 2. Ask the user for the temperature for each day
 
         for (int i = 0; i < numDays; i++) {
             System.out.print("Please enter the temperature for day " + (i + 1) + ":");
