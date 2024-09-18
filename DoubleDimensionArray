@@ -1,0 +1,96 @@
+}import java.util.Arrays;
+
+public class DoubleDimensionArray {
+    int[] arr;
+
+    public DoubleDimensionArray(int sizeOfArray) {
+        arr = new int[sizeOfArray];
+        Arrays.fill(arr, Integer.MIN_VALUE);
+    }
+
+    public void insert(int location, int valueToInsert) {
+        try {
+            if (arr[location] == Integer.MIN_VALUE) {
+                arr[location] = valueToInsert;
+                System.out.println("Successfully inserted");
+            } else {
+                System.out.println("This cell is already in use");
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid index to access array: " + e);
+        }
+    }
+
+    public void traverseArray() {
+        try {
+            for (int value : arr) {
+                System.out.print(value + " ");
+            }
+            System.out.println();
+        } catch (NullPointerException e) {
+            System.out.println("Array is null.");
+        }
+    }
+
+    public void delete(int location) {
+        try {
+            arr[location] = Integer.MIN_VALUE;
+            System.out.println("Value has been deleted successfully");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid index to access array: " + e);
+        }
+    }
+
+    public void deleteAll() {
+        Arrays.fill(arr, Integer.MIN_VALUE);
+        System.out.println("All values have been deleted successfully");
+    }
+
+    public void search(int valueToSearch) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == valueToSearch) {
+                System.out.println("Value found at index: " + i);
+                return;
+            }
+        }
+        System.out.println("Value not found in array");
+    }
+
+    public static void main(String[] args) {
+        DoubleDimensionArray doubleDimensionArray = new DoubleDimensionArray(10);
+
+
+        doubleDimensionArray.insert(0, 1);
+        doubleDimensionArray.insert(1, 2);
+        doubleDimensionArray.insert(2, 3);
+        doubleDimensionArray.insert(3, 4);
+        doubleDimensionArray.insert(4, 5);
+        doubleDimensionArray.insert(5, 3);
+        doubleDimensionArray.insert(6, 4);
+        doubleDimensionArray.insert(7, 5);
+        System.out.println("Initial Array: " + Arrays.toString(doubleDimensionArray.arr));
+        System.out.print("Traversing Array: ");
+        doubleDimensionArray.traverseArray();
+
+
+        doubleDimensionArray.delete(3);
+        System.out.println("Array after deleting value at index 3: " + Arrays.toString(doubleDimensionArray.arr));
+
+
+        doubleDimensionArray.search(4);
+
+
+        doubleDimensionArray.deleteAll();
+        System.out.println("Array after deleting all values: " + Arrays.toString(doubleDimensionArray.arr));
+
+
+        System.out.print("Attempting to traverse an empty array: ");
+        doubleDimensionArray.traverseArray();
+
+
+        doubleDimensionArray.delete(1);
+
+
+        doubleDimensionArray.search(1);
+    }
+}
